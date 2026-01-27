@@ -24,9 +24,21 @@ jobs:
       - name: Build today.csv
         run: node scripts/build-quotes.mjs
 
+      - name: Debug output
+        run: |
+          ls -la docs
+          if [ -f docs/today.csv ]; then
+            echo "today.csv contents:"
+            cat docs/today.csv
+          else
+            echo "today.csv missing"
+            exit 1
+          fi
+
       - name: Commit if changed
         run: |
-          if git diff --quiet; then
+          git add docs/today.csv
+          if git diff --cached --quiet; then
             echo "No changes"
             exit 0
           fi
