@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const zenUrl = "https://zenquotes.io/api/today/";
-const attribution = " (via https://zenquotes.io/)";
+const attribution = " (zenquotes.io)";
 const outputPath = path.join("docs", "today.csv");
 
 const csvEscape = (s) => `"${String(s ?? "").replace(/"/g, '""')}"`;
@@ -20,8 +20,8 @@ if (!q && !a) {
   throw new Error("ZenQuotes response missing quote data");
 }
 
-const author = normalize(a || "Unknown");
-const quote = `${normalize(q)}${attribution}`;
+const author = `${normalize(a || "Unknown")}${attribution}`;
+const quote = normalize(q);
 
 const csvLine = `${csvEscape(author)},${csvEscape(quote)}\n`;
 
