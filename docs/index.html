@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bonjourr ZenQuotes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #161a22;
+      --text: #e6e8eb;
+      --muted: #9aa3ad;
+      --accent: #7aa2f7;
+      --border: #262b36;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", Roboto, Ubuntu, sans-serif;
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 1.8rem;
+      letter-spacing: 0.3px;
+    }
+
+    h2 {
+      margin-top: 2.5rem;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ol {
+      margin: 1rem 0 1.5rem 1.25rem;
+      color: var(--muted);
+    }
+
+    ol li {
+      margin: 0.4rem 0;
+    }
+
+    code {
+      display: block;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      background: #0b0d12;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.9rem;
+      color: var(--text);
+      overflow-x: auto;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Bonjourr ZenQuotes</h1>
+
+    <p>
+      This repository provides a daily quote CSV for the
+      <a href="https://github.com/victrme/Bonjourr">Bonjourr</a>
+      browser extension.
+    </p>
+
+    <p>
+      A GitHub Action runs once per day, fetches the ZenQuotes
+      “quote of the day”, converts it to the CSV format expected
+      by Bonjourr, and publishes it via GitHub Pages.
+    </p>
+
+    <p>
+      Quotes include attribution with a link to
+      <a href="https://zenquotes.io/">https://zenquotes.io/</a>.
+    </p>
+
+    <h2>How to use</h2>
+
+    <ol>
+      <li>Install the Bonjourr browser extension</li>
+      <li>Open Bonjourr settings → <strong>Quotes</strong></li>
+      <li>Set <strong>Type</strong> to <strong>URL</strong></li>
+      <li>Paste the CSV URL:</li>
+    </ol>
+
+    <code>
+https://joshkaspar.github.io/bonjourr-sync/today.csv
+    </code>
+
+    <p>The quote will update automatically each day.</p>
+
+	<footer>
+	  Quotes via <a href="https://zenquotes.io/">ZenQuotes</a>.
+	  Built for <a href="https://github.com/victrme/Bonjourr">Bonjourr</a>.
+      This project is released under the MIT License.
+	</footer>
+  </main>
+</body>
+</html>
