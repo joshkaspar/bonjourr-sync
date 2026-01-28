@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Build today.csv
+      - name: Build today files
         run: node scripts/build-quotes.mjs
 
       - name: Debug output
@@ -34,16 +34,23 @@ jobs:
             echo "today.csv missing"
             exit 1
           fi
+          if [ -f docs/today.json ]; then
+            echo "today.json contents:"
+            cat docs/today.json
+          else
+            echo "today.json missing"
+            exit 1
+          fi
 
       - name: Commit if changed
         run: |
-          git add docs/today.csv
+          git add docs/today.csv docs/today.json
           if git diff --cached --quiet; then
             echo "No changes"
             exit 0
           fi
           git config user.name "quotes-bot"
           git config user.email "quotes-bot@users.noreply.github.com"
-          git add docs/today.csv
-          git commit -m "Update today.csv"
+          git add docs/today.csv docs/today.json
+          git commit -m "Update today files"
           git push

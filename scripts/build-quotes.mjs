@@ -3,7 +3,8 @@ import path from "node:path";
 
 const zenUrl = "https://zenquotes.io/api/today/";
 const attribution = " (zenquotes.io)";
-const outputPath = path.join("docs", "today.csv");
+const csvPath = path.join("docs", "today.csv");
+const jsonPath = path.join("docs", "today.json");
 
 const csvEscape = (s) => `"${String(s ?? "").replace(/"/g, '""')}"`;
 const normalize = (s) => String(s ?? "").replace(/\r?\n/g, " ").trim();
@@ -22,8 +23,15 @@ if (!q && !a) {
 
 const author = `${normalize(a || "Unknown")}${attribution}`;
 const quote = normalize(q);
+const payload = [
+  {
+    author,
+    content: quote,
+  },
+];
 
 const csvLine = `${csvEscape(author)},${csvEscape(quote)}\n`;
 
-fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-fs.writeFileSync(outputPath, csvLine, "utf8");
+fs.mkdirSync(path.dirname(csvPath), { recursive: true });
+fs.writeFileSync(csvPath, csvLine, "utf8");
+fs.writeFileSync(jsonPath, JSON.stringify(payload, null, 2) + "\n", "utf8");
