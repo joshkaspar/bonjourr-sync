@@ -2,7 +2,7 @@ name: Update today.csv
 
 on:
   schedule:
-    - cron: "0 * * * *" # hourly on the hour (UTC)
+    - cron: "5 * * * *" # hourly at 5 minutes past the hour (UTC)
   workflow_dispatch: {}
 
 concurrency:
