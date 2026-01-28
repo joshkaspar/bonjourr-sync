@@ -27,13 +27,13 @@ jobs:
       - name: Debug output
         run: |
           ls -la docs
-          if [ -f docs/today.csv ]; then
-            echo "today.csv contents:"
-            cat docs/today.csv
-          else
-            echo "today.csv missing"
-            exit 1
-          fi
+          # if [ -f docs/today.csv ]; then
+          #   echo "today.csv contents:"
+          #   cat docs/today.csv
+          # else
+          #   echo "today.csv missing"
+          #   exit 1
+          # fi
           if [ -f docs/today.json ]; then
             echo "today.json contents:"
             cat docs/today.json
@@ -44,13 +44,16 @@ jobs:
 
       - name: Commit if changed
         run: |
-          git add docs/today.csv docs/today.json
+          # git add docs/today.csv docs/today.json
+          git add docs/today.json
           if git diff --cached --quiet; then
             echo "No changes"
             exit 0
           fi
           git config user.name "quotes-bot"
           git config user.email "quotes-bot@users.noreply.github.com"
-          git add docs/today.csv docs/today.json
-          git commit -m "Update today files"
+          # git add docs/today.csv docs/today.json
+          # git commit -m "Update today files"
+          git add docs/today.json
+          git commit -m "Update today.json"
           git push
